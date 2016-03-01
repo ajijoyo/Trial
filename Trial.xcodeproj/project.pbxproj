@@ -15,6 +15,11 @@
 		D30F58261C85402F009EEA00 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D30F58241C85402F009EEA00 /* Main.storyboard */; };
 		D30F58281C85402F009EEA00 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D30F58271C85402F009EEA00 /* Assets.xcassets */; };
 		D30F582B1C85402F009EEA00 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D30F58291C85402F009EEA00 /* LaunchScreen.storyboard */; };
+		D30F58351C8543E6009EEA00 /* ColorExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = D30F58341C8543E6009EEA00 /* ColorExtension.m */; };
+		D312E6D91C856024008CA6FD /* playerShip.m in Sources */ = {isa = PBXBuildFile; fileRef = D312E6D81C856024008CA6FD /* playerShip.m */; };
+		D312E6DD1C85659F008CA6FD /* character.m in Sources */ = {isa = PBXBuildFile; fileRef = D312E6DC1C85659F008CA6FD /* character.m */; };
+		D312E6E01C8578EC008CA6FD /* sturct.m in Sources */ = {isa = PBXBuildFile; fileRef = D312E6DF1C8578EC008CA6FD /* sturct.m */; };
+		D324735B1C85FA6900FB2F4A /* TCProgressBarNode.m in Sources */ = {isa = PBXBuildFile; fileRef = D324735A1C85FA6900FB2F4A /* TCProgressBarNode.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -31,6 +36,17 @@
 		D30F58271C85402F009EEA00 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D30F582A1C85402F009EEA00 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		D30F582C1C85402F009EEA00 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D30F58321C85436A009EEA00 /* PrefixHeader.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
+		D30F58331C8543E6009EEA00 /* ColorExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ColorExtension.h; sourceTree = "<group>"; };
+		D30F58341C8543E6009EEA00 /* ColorExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ColorExtension.m; sourceTree = "<group>"; };
+		D312E6D71C856024008CA6FD /* playerShip.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = playerShip.h; sourceTree = "<group>"; };
+		D312E6D81C856024008CA6FD /* playerShip.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = playerShip.m; sourceTree = "<group>"; };
+		D312E6DB1C85659F008CA6FD /* character.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = character.h; sourceTree = "<group>"; };
+		D312E6DC1C85659F008CA6FD /* character.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = character.m; sourceTree = "<group>"; };
+		D312E6DE1C8578EC008CA6FD /* sturct.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = sturct.h; sourceTree = "<group>"; };
+		D312E6DF1C8578EC008CA6FD /* sturct.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = sturct.m; sourceTree = "<group>"; };
+		D32473591C85FA6900FB2F4A /* TCProgressBarNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TCProgressBarNode.h; sourceTree = "<group>"; };
+		D324735A1C85FA6900FB2F4A /* TCProgressBarNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TCProgressBarNode.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,6 +79,9 @@
 		D30F58151C85402F009EEA00 /* Trial */ = {
 			isa = PBXGroup;
 			children = (
+				D30F58361C8543F7009EEA00 /* Extension */,
+				D312E6E11C857AA6008CA6FD /* structContainer */,
+				D312E6DA1C856030008CA6FD /* actor */,
 				D30F58191C85402F009EEA00 /* AppDelegate.h */,
 				D30F581A1C85402F009EEA00 /* AppDelegate.m */,
 				D30F581C1C85402F009EEA00 /* GameScene.h */,
@@ -83,8 +102,48 @@
 			isa = PBXGroup;
 			children = (
 				D30F58171C85402F009EEA00 /* main.m */,
+				D30F58321C85436A009EEA00 /* PrefixHeader.pch */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		D30F58361C8543F7009EEA00 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				D30F58331C8543E6009EEA00 /* ColorExtension.h */,
+				D30F58341C8543E6009EEA00 /* ColorExtension.m */,
+			);
+			name = Extension;
+			sourceTree = "<group>";
+		};
+		D312E6DA1C856030008CA6FD /* actor */ = {
+			isa = PBXGroup;
+			children = (
+				D312E6D71C856024008CA6FD /* playerShip.h */,
+				D312E6D81C856024008CA6FD /* playerShip.m */,
+				D312E6DB1C85659F008CA6FD /* character.h */,
+				D312E6DC1C85659F008CA6FD /* character.m */,
+				D312E6E51C857BC9008CA6FD /* healthBar */,
+			);
+			name = actor;
+			sourceTree = "<group>";
+		};
+		D312E6E11C857AA6008CA6FD /* structContainer */ = {
+			isa = PBXGroup;
+			children = (
+				D312E6DE1C8578EC008CA6FD /* sturct.h */,
+				D312E6DF1C8578EC008CA6FD /* sturct.m */,
+			);
+			name = structContainer;
+			sourceTree = "<group>";
+		};
+		D312E6E51C857BC9008CA6FD /* healthBar */ = {
+			isa = PBXGroup;
+			children = (
+				D32473591C85FA6900FB2F4A /* TCProgressBarNode.h */,
+				D324735A1C85FA6900FB2F4A /* TCProgressBarNode.m */,
+			);
+			name = healthBar;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -158,10 +217,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D312E6E01C8578EC008CA6FD /* sturct.m in Sources */,
+				D312E6D91C856024008CA6FD /* playerShip.m in Sources */,
+				D30F58351C8543E6009EEA00 /* ColorExtension.m in Sources */,
+				D324735B1C85FA6900FB2F4A /* TCProgressBarNode.m in Sources */,
 				D30F58231C85402F009EEA00 /* GameViewController.m in Sources */,
 				D30F581B1C85402F009EEA00 /* AppDelegate.m in Sources */,
 				D30F581E1C85402F009EEA00 /* GameScene.m in Sources */,
 				D30F58181C85402F009EEA00 /* main.m in Sources */,
+				D312E6DD1C85659F008CA6FD /* character.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -273,6 +337,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				GCC_PREFIX_HEADER = Trial/PrefixHeader.pch;
 				INFOPLIST_FILE = Trial/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.originesia.Trial;
@@ -284,6 +349,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				GCC_PREFIX_HEADER = Trial/PrefixHeader.pch;
 				INFOPLIST_FILE = Trial/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.originesia.Trial;
@@ -310,6 +376,7 @@
 				D30F58311C85402F009EEA00 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

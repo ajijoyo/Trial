@@ -1,0 +1,25 @@
+//
+//  PrefixHeader.pch
+//  Trial
+//
+//  Created by Dealjava on 3/1/16.
+//  Copyright © 2016 oirignesia. All rights reserved.
+//
+
+#ifndef PrefixHeader_pch
+#define PrefixHeader_pch
+
+#ifdef DEBUG
+#   define NSLog(fmt, ...) NSLog((@"%s [Line %d] " fmt), __PRETTY_FUNCTION__, __LINE__, ##__VA_ARGS__)
+#endif
+
+// Include any system framework and library headers here that should be included in all compilation units.
+// You will also need to set the Prefix Header build setting of one or more of your targets to reference this file.
+
+#import <Foundation/Foundation.h>
+#import <UIKit/UIKit.h>
+#import <SpriteKit/SpriteKit.h>
+#import "ColorExtension.h"
+#import "sturct.h"
+
+#endif /* PrefixHeader_pch */

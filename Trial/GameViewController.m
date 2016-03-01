@@ -28,6 +28,11 @@
     
     // Present the scene.
     [skView presentScene:scene];
+    
+}
+
+-(void)viewDidLayoutSubviews{
+
 }
 
 - (BOOL)shouldAutorotate
