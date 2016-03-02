@@ -32,6 +32,7 @@
 /** this character must level up */
 -(void)levelUp:(CGFloat)lvl;
 
+-(void)setScorePoint:(CGFloat)Point;
 
 @property(nonatomic,weak) id<characterDelegate> delegate;
 /** get level this current character */

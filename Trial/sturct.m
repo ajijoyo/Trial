@@ -16,6 +16,15 @@ CGFloat const kLayercharacters = 2;
 
 CGFloat const kLayertopMost = 10;
 
+NSString *const kphysicsBodyHero = @"Hero";
+
+NSString *const kphysicsBodyBullets = @"Bullets";
+
+NSString *const kphysicsBodyEnemy = @"Enemy";
+
+UInt32 const kBodyTypeGround = 0;
+
+UInt32 const kBodyTypeBody = 1;
 
 
 @end

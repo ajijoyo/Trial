@@ -40,10 +40,8 @@
     if (_progress != progress)
     {
         _progress = MIN(MAX(progress, 0.0), 1.0);
-        [self progressDidChange];
         
-//        CGFloat hue = MAX(0, ((120.0 * progress) / 360.0) - (20.0/360.0));
-//        self.fillColor = [UIColor colorWithHue:hue saturation:1 brightness:1 alpha:1.0];
+        [self progressDidChange];
     }
 }
 
@@ -174,12 +172,12 @@
     
     _fillSpriteNode.anchorPoint = CGPointMake(0.0f, 0.5f);
     _fillSpriteNode.position = CGPointMake(-round(_size.width / 2.0), 0.0);
-    
+    _fillCropNode.zPosition = 1;
     [_fillCropNode addChild:_fillSpriteNode];
 }
 
 /* The overlay sprite node sits on top of the fill and background sprite nodes, giving the proper appearance
-  of a bar being filled on the inside */
+ of a bar being filled on the inside */
 - (void)initializeOverlaySpriteNode
 {
     /* If a custom overlay texture wasn't provided, we generate a custom texture from
@@ -223,7 +221,7 @@
 {
     CAShapeLayer *shapeLayer = [CAShapeLayer new];
     CGFloat halfBorderWidth = round(_borderWidth / 2.0);
-
+    
     shapeLayer.frame = CGRectMake(0.0, 0.0, _size.width, _size.height);
     
     /* Inset the path so that we don't stroke outside of our bounds */
@@ -233,7 +231,7 @@
 }
 
 /* We are going from CALayer -> UIImage -> SKTexture here, so that we can create SKSpriteNodes instead of SKShapeNodes (SKShapeNode doesn't work well with SKCropNode),
- which are then plugged into the maskNode property of a SKCropNode.  This approach also conveniently allows us to use the same code path for custom textures and generated 
+ which are then plugged into the maskNode property of a SKCropNode.  This approach also conveniently allows us to use the same code path for custom textures and generated
  textures if you just want a basic progress bar */
 - (SKTexture *)textureFromLayer:(CALayer *)layer
 {
@@ -264,12 +262,12 @@
 - (void)progressDidChange
 {
     CGFloat halfBorderWidth = round(_borderWidth / 2.0);
-
+    
     CGFloat fillWidth = self.size.width - self.borderWidth;
     CGFloat fillHeight = self.size.height - self.borderWidth;
     CGFloat width = halfBorderWidth + round(fillWidth * _progress);
     CGFloat height = halfBorderWidth + fillHeight;
-
+    
     _fillSpriteNode.size = CGSizeMake(width, height);
 }
 

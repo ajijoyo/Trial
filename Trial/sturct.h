@@ -17,5 +17,18 @@ extern CGFloat const kLayercharacters;
 /** layer for most TOP 10 */
 extern CGFloat const kLayertopMost;
 
+/** physicsBody name for hero */
+extern NSString *const kphysicsBodyHero;
+/** physicsBody name for bullets */
+extern NSString *const kphysicsBodyBullets;
+/** physicsBody name for enemy */
+extern NSString *const kphysicsBodyEnemy;
+
+/** categoryBitMask int for ground */
+extern UInt32 const kBodyTypeGround;
+/** categoryBitMask int for body */
+extern UInt32 const kBodyTypeBody;
+
+
 
 @end

@@ -16,6 +16,8 @@
 		D30F58281C85402F009EEA00 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D30F58271C85402F009EEA00 /* Assets.xcassets */; };
 		D30F582B1C85402F009EEA00 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D30F58291C85402F009EEA00 /* LaunchScreen.storyboard */; };
 		D30F58351C8543E6009EEA00 /* ColorExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = D30F58341C8543E6009EEA00 /* ColorExtension.m */; };
+		D3123E341C86960D00A25D5E /* bullets.m in Sources */ = {isa = PBXBuildFile; fileRef = D3123E331C86960D00A25D5E /* bullets.m */; };
+		D3123E381C869EA500A25D5E /* mushroom.m in Sources */ = {isa = PBXBuildFile; fileRef = D3123E371C869EA500A25D5E /* mushroom.m */; };
 		D312E6D91C856024008CA6FD /* playerShip.m in Sources */ = {isa = PBXBuildFile; fileRef = D312E6D81C856024008CA6FD /* playerShip.m */; };
 		D312E6DD1C85659F008CA6FD /* character.m in Sources */ = {isa = PBXBuildFile; fileRef = D312E6DC1C85659F008CA6FD /* character.m */; };
 		D312E6E01C8578EC008CA6FD /* sturct.m in Sources */ = {isa = PBXBuildFile; fileRef = D312E6DF1C8578EC008CA6FD /* sturct.m */; };
@@ -39,6 +41,10 @@
 		D30F58321C85436A009EEA00 /* PrefixHeader.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
 		D30F58331C8543E6009EEA00 /* ColorExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ColorExtension.h; sourceTree = "<group>"; };
 		D30F58341C8543E6009EEA00 /* ColorExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ColorExtension.m; sourceTree = "<group>"; };
+		D3123E321C86960D00A25D5E /* bullets.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = bullets.h; sourceTree = "<group>"; };
+		D3123E331C86960D00A25D5E /* bullets.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = bullets.m; sourceTree = "<group>"; };
+		D3123E361C869EA500A25D5E /* mushroom.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = mushroom.h; sourceTree = "<group>"; };
+		D3123E371C869EA500A25D5E /* mushroom.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = mushroom.m; sourceTree = "<group>"; };
 		D312E6D71C856024008CA6FD /* playerShip.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = playerShip.h; sourceTree = "<group>"; };
 		D312E6D81C856024008CA6FD /* playerShip.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = playerShip.m; sourceTree = "<group>"; };
 		D312E6DB1C85659F008CA6FD /* character.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = character.h; sourceTree = "<group>"; };
@@ -81,6 +87,8 @@
 			children = (
 				D30F58361C8543F7009EEA00 /* Extension */,
 				D312E6E11C857AA6008CA6FD /* structContainer */,
+				D312E6E51C857BC9008CA6FD /* healthBar */,
+				D3123E351C86961100A25D5E /* ammo */,
 				D312E6DA1C856030008CA6FD /* actor */,
 				D30F58191C85402F009EEA00 /* AppDelegate.h */,
 				D30F581A1C85402F009EEA00 /* AppDelegate.m */,
@@ -116,6 +124,15 @@
 			name = Extension;
 			sourceTree = "<group>";
 		};
+		D3123E351C86961100A25D5E /* ammo */ = {
+			isa = PBXGroup;
+			children = (
+				D3123E321C86960D00A25D5E /* bullets.h */,
+				D3123E331C86960D00A25D5E /* bullets.m */,
+			);
+			name = ammo;
+			sourceTree = "<group>";
+		};
 		D312E6DA1C856030008CA6FD /* actor */ = {
 			isa = PBXGroup;
 			children = (
@@ -123,7 +140,8 @@
 				D312E6D81C856024008CA6FD /* playerShip.m */,
 				D312E6DB1C85659F008CA6FD /* character.h */,
 				D312E6DC1C85659F008CA6FD /* character.m */,
-				D312E6E51C857BC9008CA6FD /* healthBar */,
+				D3123E361C869EA500A25D5E /* mushroom.h */,
+				D3123E371C869EA500A25D5E /* mushroom.m */,
 			);
 			name = actor;
 			sourceTree = "<group>";
@@ -218,9 +236,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				D312E6E01C8578EC008CA6FD /* sturct.m in Sources */,
+				D3123E341C86960D00A25D5E /* bullets.m in Sources */,
 				D312E6D91C856024008CA6FD /* playerShip.m in Sources */,
 				D30F58351C8543E6009EEA00 /* ColorExtension.m in Sources */,
 				D324735B1C85FA6900FB2F4A /* TCProgressBarNode.m in Sources */,
+				D3123E381C869EA500A25D5E /* mushroom.m in Sources */,
 				D30F58231C85402F009EEA00 /* GameViewController.m in Sources */,
 				D30F581B1C85402F009EEA00 /* AppDelegate.m in Sources */,
 				D30F581E1C85402F009EEA00 /* GameScene.m in Sources */,
@@ -339,6 +359,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				GCC_PREFIX_HEADER = Trial/PrefixHeader.pch;
 				INFOPLIST_FILE = Trial/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.originesia.Trial;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -351,6 +372,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				GCC_PREFIX_HEADER = Trial/PrefixHeader.pch;
 				INFOPLIST_FILE = Trial/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.originesia.Trial;
 				PRODUCT_NAME = "$(TARGET_NAME)";

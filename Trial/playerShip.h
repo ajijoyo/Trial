@@ -15,6 +15,9 @@
     SKTexture *playerTexture;
     SKSpriteNode *playerSprite;
 }
+
+-(void)fire;
+
 @property(nonatomic,strong,readonly) TCProgressBarNode *healthBar;
 @property(nonatomic,assign)CGFloat scale;
 @end

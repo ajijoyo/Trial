@@ -9,9 +9,13 @@
 #import <SpriteKit/SpriteKit.h>
 #import "playerShip.h"
 
-@interface GameScene : SKScene
+@interface GameScene : SKScene<SKPhysicsContactDelegate>
 {
     playerShip *player;
     NSTimeInterval startTime;
+    
+    TCProgressBarNode *healtb;
+    
+    SKLabelNode *myLabel;
 }
 @end

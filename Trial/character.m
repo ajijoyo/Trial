@@ -27,6 +27,9 @@
     }
 }
 
+-(void)setScorePoint:(CGFloat)Point{
+    scorePoint += Point;
+}
 
 -(void)takeDamage:(CGFloat)dmg{
     CGFloat currHealth = health - dmg;
