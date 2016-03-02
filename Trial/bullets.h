@@ -11,7 +11,9 @@
 @interface bullets : SKNode
 {
     SKShapeNode *bull;
+    CGFloat damage;
 }
+@property(nonatomic,assign,readonly)CGFloat damage;
 -(instancetype)initColor:(UIColor*)clr;
 -(void)destroy;
 @end

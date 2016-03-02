@@ -22,9 +22,19 @@ NSString *const kphysicsBodyBullets = @"Bullets";
 
 NSString *const kphysicsBodyEnemy = @"Enemy";
 
-UInt32 const kBodyTypeGround = 0;
+UInt32 const kBodyTypeGround = 1;
 
-UInt32 const kBodyTypeBody = 1;
+UInt32 const kBodyTypeBody = 2;
+
+UInt32 const kBodyTypeEnemy = 3;
+
+UInt32 const kBodyTypeBullets = 4;
+
+UInt32 const kBodyTypeCharacter = 5;
+
+
 
 
 @end
+
+

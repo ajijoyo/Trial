@@ -12,6 +12,7 @@
 
 -(instancetype)initColor:(UIColor*)clr{
     if (self==[super init]) {
+        damage = 10;
         
         bull = [SKShapeNode node];
         bull.path = CGPathCreateWithRoundedRect(CGRectMake(-5, -15, 10, 30), 5, 5, nil);
@@ -22,8 +23,8 @@
         self.physicsBody.dynamic = NO;
         self.physicsBody.affectedByGravity = NO;
         self.physicsBody.mass = 1.0;
-        self.physicsBody.categoryBitMask = kBodyTypeBody;
-        self.physicsBody.contactTestBitMask = kBodyTypeBody;
+        self.physicsBody.categoryBitMask = kBodyTypeBullets;
+        self.physicsBody.contactTestBitMask = kBodyTypeEnemy | kBodyTypeGround;
         self.name = kphysicsBodyBullets;
         
         SKAction *action = [SKAction moveByX:-5 y:500 duration:3];
@@ -49,5 +50,8 @@
 
 }
 
+-(CGFloat)damage{
+    return damage;
+}
 
 @end

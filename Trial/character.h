@@ -9,32 +9,35 @@
 #import <SpriteKit/SpriteKit.h>
 
 
-@protocol characterDelegate <NSObject>
-
--(void)characterDidtakeDamage:(CGFloat)dmg;
--(void)characterDidLevelUp:(CGFloat)lvl;
--(void)characterDidDie;
-
-@end
+typedef void (^characterHandler)();
+typedef void (^characterHandlerParams)(CGFloat count);
 
 @interface character : SKNode
 {
     CGFloat health;
     int level;
     CGFloat scorePoint;
+    
+    characterHandler action;
+    characterHandlerParams actiondamage;
+    characterHandlerParams actionlvl;
 }
-
+/** called when character is destory */
+-(void)characterDidDie:(characterHandler)handler;
+/** called when character is taken damage */
+-(void)characterTakeDamage:(characterHandlerParams)handler;
+/** called when character is levelup */
+-(void)characterDidLevelUP:(characterHandlerParams)handler;
 
 /** this character must die */
--(void)die;
+-(void)destroy;
 /** this character must take damage */
 -(void)takeDamage:(CGFloat)dmg;
 /** this character must level up */
 -(void)levelUp:(CGFloat)lvl;
 
--(void)setScorePoint:(CGFloat)Point;
+-(void)setScore:(CGFloat)Point;
 
-@property(nonatomic,weak) id<characterDelegate> delegate;
 /** get level this current character */
 @property(nonatomic,assign,readonly) int level;
 /** get health this current character */

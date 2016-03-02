@@ -20,11 +20,13 @@ CGFloat const defaultScale = 0.25;
         CGSize sizeM = CGSizeMake(playerTexture.size.width * defaultScale, playerTexture.size.height * defaultScale);
         health = 100;
         playerSprite = [SKSpriteNode spriteNodeWithTexture:playerTexture size:sizeM];
-        playerSprite.zPosition = kLayercharacters;
+        self.zPosition = kLayercharacters;
         self.physicsBody = [SKPhysicsBody bodyWithTexture:playerTexture size:sizeM];
         self.physicsBody.dynamic = NO;
         self.physicsBody.affectedByGravity = NO;
         self.physicsBody.mass = 1.0;
+        self.physicsBody.categoryBitMask = kBodyTypeCharacter;
+        self.physicsBody.contactTestBitMask = kBodyTypeEnemy;
         self.name = kphysicsBodyHero;
 
         _healthBar = [[TCProgressBarNode alloc]initWithSize:CGSizeMake(60, 10) backgroundColor:[SKColor groupTableViewBackgroundColor] fillColor:[SKColor greenColor] borderColor:[SKColor lightGrayColor] borderWidth:2 cornerRadius:4];

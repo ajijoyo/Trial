@@ -22,4 +22,13 @@
 #import "ColorExtension.h"
 #import "sturct.h"
 
+
+
+static inline CGFloat skRandf(){
+    return arc4random() / (CGFloat) RAND_MAX;
+}
+static inline CGFloat skRand(CGFloat low, CGFloat high){
+    return skRandf() * (high - low) + low;
+}
+
 #endif /* PrefixHeader_pch */

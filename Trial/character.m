@@ -19,15 +19,26 @@
     return self;
 }
 
+
+-(void)characterDidDie:(characterHandler)handler{
+    action = handler;
+}
+-(void)characterDidLevelUP:(characterHandlerParams)handler{
+    actionlvl = handler;
+}
+-(void)characterTakeDamage:(characterHandlerParams)handler{
+    actiondamage = handler;
+}
+
 -(void)levelUp:(CGFloat)lvl{
     level = lvl;
 
-    if (_delegate) {
-        [_delegate characterDidLevelUp:level];
+    if (actionlvl) {
+        actionlvl(level);
     }
 }
 
--(void)setScorePoint:(CGFloat)Point{
+-(void)setScore:(CGFloat)Point{
     scorePoint += Point;
 }
 
@@ -35,19 +46,18 @@
     CGFloat currHealth = health - dmg;
     if (currHealth >= 0) {
         health = currHealth;
-        if (_delegate) {
-            [_delegate characterDidtakeDamage:dmg];
+        if (actiondamage) {
+            actiondamage(dmg);
         }
     }else{
-        [self die];
+        [self destroy];
     }
 }
 
--(void)die{
-    NSLog(@"Player must die");
-    
-    if (self.delegate) {
-        [self.delegate characterDidDie];
+-(void)destroy{
+    [self removeFromParent];
+    if (action) {
+        action();
     }
 }
 

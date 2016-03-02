@@ -21,14 +21,10 @@
     self.backgroundColor = [SKColor whiteColor];
     self.physicsWorld.contactDelegate = self;
     
-    mushroom *enm = [[mushroom alloc]init];
-    enm.position = CGPointMake(150, 600);
-    
-    [self addChild:enm];
-    
     player = [[playerShip alloc]init];
-    player.position = CGPointMake(500, 500);
-    player.healthBar.progress = 0.5;
+    player.position = CGPointMake(500, 160);
+    player.scale = 0.25;
+    player.healthBar.progress = 1;
     
     [NSTimer scheduledTimerWithTimeInterval:0.4 target:self selector:@selector(fire) userInfo:nil repeats:YES];
     [self addChild:player];
@@ -37,10 +33,13 @@
     myLabel.fontColor = [SKColor redColor];
     myLabel.text = [NSString stringWithFormat:@"Score %d",(int)player.scorePoint];
     myLabel.fontSize = 20;
-    myLabel.position = CGPointMake(self.size.width - 100, self.size.height - 150);
+    myLabel.position = CGPointMake(self.size.width - 16, self.size.height - 150);
     myLabel.zPosition = kLayertopMost;
+    myLabel.horizontalAlignmentMode = SKLabelHorizontalAlignmentModeRight;
     
     [self addChild:myLabel];
+    
+    [self generateEnemy];
     
 }
 
@@ -61,14 +60,39 @@
     [self addChild:bullet];
 }
 
+-(void)generateEnemy{
+    for (int i = 1; i<10; i++) {
+        for (int j = 1; j< 3; j++) {
+            mushroom *enm = [[mushroom alloc]init];
+            enm.position = CGPointMake(100 * i, 450 + (j*80));
+            [enm startAnim];
+            [enm characterDidDie:^{
+                [player setScore:100];
+                myLabel.text = [NSString stringWithFormat:@"Score %d",(int)player.scorePoint];
+            }];
+            [self addChild:enm];
+        }
+    }
+}
+
 #pragma mark - contactdelegate
 -(void)didBeginContact:(SKPhysicsContact *)contact{
 
-    if ([contact.bodyA.node isKindOfClass:[mushroom class]]) {
-        [((mushroom*)contact.bodyA.node) die];
-        [((bullets*)contact.bodyB.node) destroy];
-        [player setScorePoint:100];
-        myLabel.text = [NSString stringWithFormat:@"Score %d",(int)player.scorePoint];
+    if (contact.bodyA.categoryBitMask == kBodyTypeEnemy || contact.bodyB.categoryBitMask == kBodyTypeEnemy) {
+        if ([contact.bodyA.node.name isEqualToString:kphysicsBodyEnemy]) {
+            mushroom *ms = (mushroom*)contact.bodyA.node;
+            bullets *bl = (bullets*)contact.bodyB.node;
+            [ms takeDamage:bl.damage];
+            [bl destroy];
+            contact.bodyB.categoryBitMask = 0;
+        }else if([contact.bodyB.node.name isEqualToString:kphysicsBodyEnemy]){
+            mushroom *ms = (mushroom*)contact.bodyB.node;
+            bullets *bl = (bullets*)contact.bodyA.node;
+            [ms takeDamage:bl.damage];
+            [bl destroy];
+            contact.bodyA.categoryBitMask = 0;
+            
+        }
     }
     
 }

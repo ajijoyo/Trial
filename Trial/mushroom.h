@@ -7,10 +7,12 @@
 //
 
 #import <SpriteKit/SpriteKit.h>
+#import "character.h"
 
-@interface mushroom : SKSpriteNode
+@interface mushroom : character
 {
-    
+    SKSpriteNode *spriteMushroom;
 }
--(void)die;
+
+-(void)startAnim;
 @end

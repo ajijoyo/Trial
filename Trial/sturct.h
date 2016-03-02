@@ -8,6 +8,8 @@
 
 #import <Foundation/Foundation.h>
 
+
+
 @interface LAYER : NSObject
 
 /** layer for background 0 */
@@ -28,6 +30,12 @@ extern NSString *const kphysicsBodyEnemy;
 extern UInt32 const kBodyTypeGround;
 /** categoryBitMask int for body */
 extern UInt32 const kBodyTypeBody;
+
+extern UInt32 const kBodyTypeEnemy;
+
+extern UInt32 const kBodyTypeBullets;
+
+extern UInt32 const kBodyTypeCharacter;
 
 
 
