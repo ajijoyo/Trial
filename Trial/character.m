@@ -14,7 +14,7 @@
 
 -(instancetype)init{
     if (self==[super init]) {
-
+        
     }
     return self;
 }
@@ -31,8 +31,8 @@
 }
 
 -(void)levelUp:(CGFloat)lvl{
-    level = lvl;
-
+    level += lvl;
+    damage += 10;
     if (actionlvl) {
         actionlvl(level);
     }
@@ -40,6 +40,14 @@
 
 -(void)setScore:(CGFloat)Point{
     scorePoint += Point;
+}
+
+-(void)characterGetExp:(CGFloat)expi{
+    exp += expi;
+    if (exp >= 30) {
+        [self levelUp:1];
+        exp = 0;
+    }
 }
 
 -(void)takeDamage:(CGFloat)dmg{
@@ -72,5 +80,11 @@
 
 -(CGFloat)scorePoint{
     return scorePoint;
+}
+-(CGFloat)experience{
+    return experience;
+}
+-(CGFloat)damage{
+    return damage;
 }
 @end

@@ -15,11 +15,16 @@ CGFloat const defaultScale = 0.25;
 
 -(instancetype)init{
     if (self==[super init]) {
+        //set default player
+        health = 100;
+        damage = 10;
+        //
         
         playerTexture = [SKTexture textureWithImage:[UIImage imageNamed:@"Spaceship"]];
         CGSize sizeM = CGSizeMake(playerTexture.size.width * defaultScale, playerTexture.size.height * defaultScale);
-        health = 100;
+        
         playerSprite = [SKSpriteNode spriteNodeWithTexture:playerTexture size:sizeM];
+        
         self.zPosition = kLayercharacters;
         self.physicsBody = [SKPhysicsBody bodyWithTexture:playerTexture size:sizeM];
         self.physicsBody.dynamic = NO;

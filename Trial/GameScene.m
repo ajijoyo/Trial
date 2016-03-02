@@ -25,6 +25,9 @@
     player.position = CGPointMake(500, 160);
     player.scale = 0.25;
     player.healthBar.progress = 1;
+    [player characterDidLevelUP:^(CGFloat lvl){
+        NSLog(@"level up current damage %f",player.damage);
+    }];
     
     [NSTimer scheduledTimerWithTimeInterval:0.4 target:self selector:@selector(fire) userInfo:nil repeats:YES];
     [self addChild:player];
@@ -55,7 +58,7 @@
 }
 
 -(void)fire{
-    bullets *bullet = [[bullets alloc]initColor:[SKColor redColor]];
+    bullets *bullet = [[bullets alloc]initColor:[SKColor redColor] damage:player.damage];
     bullet.position = CGPointMake(player.position.x, player.position.y + (([player calculateAccumulatedFrame].size.height)/2) + 4);
     [self addChild:bullet];
 }
@@ -69,6 +72,7 @@
             [enm characterDidDie:^{
                 [player setScore:100];
                 myLabel.text = [NSString stringWithFormat:@"Score %d",(int)player.scorePoint];
+                [player characterGetExp:enm.experience];
             }];
             [self addChild:enm];
         }

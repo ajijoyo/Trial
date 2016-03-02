@@ -15,13 +15,17 @@ typedef void (^characterHandlerParams)(CGFloat count);
 @interface character : SKNode
 {
     CGFloat health;
+    CGFloat damage;
     int level;
     CGFloat scorePoint;
+    CGFloat exp;
+    CGFloat experience;
     
     characterHandler action;
     characterHandlerParams actiondamage;
     characterHandlerParams actionlvl;
 }
+
 /** called when character is destory */
 -(void)characterDidDie:(characterHandler)handler;
 /** called when character is taken damage */
@@ -33,8 +37,8 @@ typedef void (^characterHandlerParams)(CGFloat count);
 -(void)destroy;
 /** this character must take damage */
 -(void)takeDamage:(CGFloat)dmg;
-/** this character must level up */
--(void)levelUp:(CGFloat)lvl;
+/** this character must get exp (CGFLOAT) */
+-(void)characterGetExp:(CGFloat)expi;
 
 -(void)setScore:(CGFloat)Point;
 
@@ -44,5 +48,9 @@ typedef void (^characterHandlerParams)(CGFloat count);
 @property(nonatomic,assign,readonly) CGFloat health;
 /** get scorepoint this current character */
 @property(nonatomic,assign,readonly) CGFloat scorePoint;
+/** get experience when character is die */
+@property(nonatomic,assign,readonly) CGFloat experience;
+/** get damage when character is HIT */
+@property(nonatomic,assign,readonly) CGFloat damage;
 
 @end

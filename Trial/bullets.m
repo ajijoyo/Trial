@@ -10,16 +10,16 @@
 
 @implementation bullets
 
--(instancetype)initColor:(UIColor*)clr{
+-(instancetype)initColor:(UIColor*)clr damage:(CGFloat)dmg{
     if (self==[super init]) {
-        damage = 10;
+        _damage = dmg;
         
         bull = [SKShapeNode node];
-        bull.path = CGPathCreateWithRoundedRect(CGRectMake(-5, -15, 10, 30), 5, 5, nil);
+        bull.path = CGPathCreateWithRoundedRect(CGRectMake(-_damage /2, -15, _damage, 30), _damage/2, 5, nil);
         bull.strokeColor = bull.fillColor = clr;
         [self addChild:bull];
         
-        self.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:CGSizeMake(10, 30)];
+        self.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:CGSizeMake(_damage, 30)];
         self.physicsBody.dynamic = NO;
         self.physicsBody.affectedByGravity = NO;
         self.physicsBody.mass = 1.0;
@@ -27,11 +27,12 @@
         self.physicsBody.contactTestBitMask = kBodyTypeEnemy | kBodyTypeGround;
         self.name = kphysicsBodyBullets;
         
-        SKAction *action = [SKAction moveByX:-5 y:500 duration:3];
+        self.zPosition = kLayercharacters;
+        
+        SKAction *action = [SKAction moveByX:-_damage /2 y:500 duration:3];
         [self runAction:action completion:^{
             [self destroy];
         }];
-        self.zPosition = kLayercharacters;
 
     }
     return self;
@@ -50,8 +51,5 @@
 
 }
 
--(CGFloat)damage{
-    return damage;
-}
 
 @end

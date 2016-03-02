@@ -13,15 +13,21 @@
 
 -(instancetype)init{
     if (self==[super init]) {
+        //set default mushroom
         health = 20;
+        experience  = 10;
+        
+        //
         
         SKTexture *texture = [SKTexture textureWithImage:[UIImage imageNamed:@"mushroom"]];
         CGSize size = CGSizeMake(texture.size.width * 0.5, texture.size.height * 0.5);
-        
+
         spriteMushroom = [SKSpriteNode spriteNodeWithTexture:texture size:size];
+        spriteMushroom.color = [self randomColor];
+        spriteMushroom.colorBlendFactor = 0.5f;
+
         self.position = CGPointZero;
         self.zPosition = kLayercharacters;
-        
         self.physicsBody = [SKPhysicsBody bodyWithTexture:texture size:size];
         self.physicsBody.affectedByGravity = NO;
         self.physicsBody.dynamic = YES;
@@ -29,10 +35,19 @@
         self.physicsBody.categoryBitMask = kBodyTypeEnemy;
         self.physicsBody.contactTestBitMask = kBodyTypeBullets;
         self.name = kphysicsBodyEnemy;
-        
         [self addChild:spriteMushroom];
+
+        
+        
     }
     return self;
+}
+
+-(UIColor*)randomColor{
+    NSArray *arrColor = @[[SKColor redColor],[SKColor yellowColor],[SKColor magentaColor],[SKColor redColor]
+                          ,[SKColor greenColor],[SKColor grayColor],[SKColor purpleColor],[SKColor redColor]
+                          ,[SKColor blueColor],[SKColor blackColor]];
+    return arrColor[arc4random_uniform(arrColor.count)];
 }
 
 -(void)startAnim{
@@ -41,18 +56,6 @@
     SKAction *b = [SKAction moveToX:x-skRand(0, 10) duration:0.5];
     SKAction *sequence = [SKAction sequence:@[a,b]];
     [self runAction:[SKAction repeatActionForever:sequence]];
-}
-
-
-#pragma mark -  character delegate
--(void)characterDidDie{
-    [self removeFromParent];
-}
--(void)characterDidLevelUp:(CGFloat)lvl{
-    
-}
--(void)characterDidtakeDamage:(CGFloat)dmg{
-    NSLog(@"%f",dmg);
 }
 
 @end
