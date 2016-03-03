@@ -26,11 +26,20 @@
     player.scale = 0.25;
     player.healthBar.progress = 1;
     [player characterDidLevelUP:^(CGFloat lvl){
-        NSLog(@"level up current damage %f",player.damage);
+        levelLabel.text = [NSString stringWithFormat:@"Level %d",(int)player.level];
     }];
-    
     [NSTimer scheduledTimerWithTimeInterval:0.4 target:self selector:@selector(fire) userInfo:nil repeats:YES];
-    [self addChild:player];
+    
+    experienceBar = [[TCProgressBarNode alloc]initWithSize:CGSizeMake(self.view.bounds.size.width, 10) backgroundColor:[SKColor groupTableViewBackgroundColor] fillColor:[SKColor grayColor] borderColor:[SKColor lightGrayColor] borderWidth:2 cornerRadius:4];
+    experienceBar.position = CGPointMake(self.view.bounds.size.width - 90, 100);
+    
+    levelLabel = [SKLabelNode labelNodeWithFontNamed:@"Arial"];
+    levelLabel.fontColor = [SKColor redColor];
+    levelLabel.text = [NSString stringWithFormat:@"Level %d",(int)player.level];
+    levelLabel.fontSize = 20;
+    levelLabel.position = CGPointMake(self.view.bounds.size.width - experienceBar.position.x , 120);
+    levelLabel.zPosition = kLayertopMost;
+    levelLabel.horizontalAlignmentMode = SKLabelHorizontalAlignmentModeRight;
     
     myLabel = [SKLabelNode labelNodeWithFontNamed:@"Arial"];
     myLabel.fontColor = [SKColor redColor];
@@ -40,10 +49,11 @@
     myLabel.zPosition = kLayertopMost;
     myLabel.horizontalAlignmentMode = SKLabelHorizontalAlignmentModeRight;
     
+    [self addChild:levelLabel];
+    [self addChild:player];
+    [self addChild:experienceBar];
     [self addChild:myLabel];
-    
     [self generateEnemy];
-    
 }
 
 -(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
@@ -72,7 +82,8 @@
             [enm characterDidDie:^{
                 [player setScore:100];
                 myLabel.text = [NSString stringWithFormat:@"Score %d",(int)player.scorePoint];
-                [player characterGetExp:enm.experience];
+                [player GetExp:enm.experience];
+                experienceBar.progress = (player.experience/player.maxExperience);
             }];
             [self addChild:enm];
         }

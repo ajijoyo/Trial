@@ -30,5 +30,8 @@ static inline CGFloat skRandf(){
 static inline CGFloat skRand(CGFloat low, CGFloat high){
     return skRandf() * (high - low) + low;
 }
+static inline int skRandom(CGFloat low){
+    return arc4random_uniform(low);
+}
 
 #endif /* PrefixHeader_pch */

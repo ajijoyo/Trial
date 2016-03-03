@@ -15,7 +15,8 @@
     NSTimeInterval startTime;
     
     TCProgressBarNode *healtb;
-    
+    TCProgressBarNode *experienceBar;
     SKLabelNode *myLabel;
+    SKLabelNode *levelLabel;
 }
 @end

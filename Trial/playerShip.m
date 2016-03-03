@@ -11,13 +11,15 @@
 
 CGFloat const defaultScale = 0.25;
 
+
 @implementation playerShip
 
 -(instancetype)init{
     if (self==[super init]) {
-        //set default player
+        //set base player
         health = 100;
         damage = 10;
+        maxExperience = 50;
         //
         
         playerTexture = [SKTexture textureWithImage:[UIImage imageNamed:@"Spaceship"]];
@@ -56,15 +58,14 @@ CGFloat const defaultScale = 0.25;
 
 }
 
-#pragma mark -  character delegate
--(void)characterDidDie{
-    
-}
--(void)characterDidLevelUp:(CGFloat)lvl{
-    
-}
--(void)characterDidtakeDamage:(CGFloat)dmg{
-    
+-(void)GetExp:(CGFloat)expi{
+    [super GetExp:expi];
+    if (experience >=  maxExperience) {
+        experience = 0;//reset exp
+        maxExperience += maxExperience * 1.2;//add max eperience
+        damage += 10;
+        [self levelUp];
+    }
 }
 
 @end

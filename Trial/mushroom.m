@@ -38,7 +38,6 @@
         [self addChild:spriteMushroom];
 
         
-        
     }
     return self;
 }
@@ -47,7 +46,7 @@
     NSArray *arrColor = @[[SKColor redColor],[SKColor yellowColor],[SKColor magentaColor],[SKColor redColor]
                           ,[SKColor greenColor],[SKColor grayColor],[SKColor purpleColor],[SKColor redColor]
                           ,[SKColor blueColor],[SKColor blackColor]];
-    return arrColor[arc4random_uniform(arrColor.count)];
+    return arrColor[skRandom(arrColor.count)];
 }
 
 -(void)startAnim{

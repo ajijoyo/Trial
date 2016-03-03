@@ -18,8 +18,8 @@ typedef void (^characterHandlerParams)(CGFloat count);
     CGFloat damage;
     int level;
     CGFloat scorePoint;
-    CGFloat exp;
     CGFloat experience;
+    CGFloat maxExperience;
     
     characterHandler action;
     characterHandlerParams actiondamage;
@@ -38,7 +38,10 @@ typedef void (^characterHandlerParams)(CGFloat count);
 /** this character must take damage */
 -(void)takeDamage:(CGFloat)dmg;
 /** this character must get exp (CGFLOAT) */
--(void)characterGetExp:(CGFloat)expi;
+-(void)GetExp:(CGFloat)expi;
+
+/** this character must level up */
+-(void)levelUp;
 
 -(void)setScore:(CGFloat)Point;
 
@@ -50,6 +53,8 @@ typedef void (^characterHandlerParams)(CGFloat count);
 @property(nonatomic,assign,readonly) CGFloat scorePoint;
 /** get experience when character is die */
 @property(nonatomic,assign,readonly) CGFloat experience;
+/** get max experience for bar exp */
+@property(nonatomic,assign,readonly) CGFloat maxExperience;
 /** get damage when character is HIT */
 @property(nonatomic,assign,readonly) CGFloat damage;
 
