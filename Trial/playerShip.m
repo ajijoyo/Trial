@@ -29,7 +29,7 @@ CGFloat const defaultScale = 0.25;
         
         self.zPosition = kLayercharacters;
         self.physicsBody = [SKPhysicsBody bodyWithTexture:playerTexture size:sizeM];
-        self.physicsBody.dynamic = NO;
+        self.physicsBody.dynamic = YES;
         self.physicsBody.affectedByGravity = NO;
         self.physicsBody.mass = 1.0;
         self.physicsBody.categoryBitMask = kBodyTypeCharacter;

@@ -34,6 +34,7 @@
         self.physicsBody.mass = 1;
         self.physicsBody.categoryBitMask = kBodyTypeEnemy;
         self.physicsBody.contactTestBitMask = kBodyTypeBullets;
+        self.physicsBody.collisionBitMask = kBodyTypeBullets;
         self.name = kphysicsBodyEnemy;
         [self addChild:spriteMushroom];
 

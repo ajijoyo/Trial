@@ -83,10 +83,12 @@
     /* Called when a touch begins */
     for (UITouch *touch in touches) {
         CGPoint location = [touch locationInNode:self];
-        SKAction *move = [SKAction moveTo:location duration:0.5];
-        [player runAction:move completion:^{
-            
-        }];
+//        SKAction *move = [SKAction moveTo:location duration:0.5];
+//        [player runAction:move completion:^{
+        
+//        }];
+
+        [player.physicsBody applyImpulse:CGVectorMake(location.x, location.y)];
     }
 }
 
@@ -144,9 +146,8 @@
 -(void)update:(CFTimeInterval)currentTime {
     /* Called before each frame is rendered */
     [super update:currentTime];
-//    CGFloat secondsElapsed = currentTime - startTime;
-//    CGFloat cycle = secondsElapsed * kCyclesPerSecond;
-//    CGFloat progress = cycle - (NSInteger)cycle;
+    
+    player.physicsBody.velocity = CGVectorMake(40, 40);
     
 }
 
