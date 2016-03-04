@@ -10,14 +10,37 @@
 #import "mushroom.h"
 #import "bullets.h"
 
+#import "scenePause.h"
+#import "skButton.h"
+
 #define kCyclesPerSecond 0.15f
 
 @implementation GameScene
 
-
+-(void)bttnListener{
+    if (self.paused) {
+        self.paused = NO;
+        for (SKNode *node in self.children) {
+            if ([node isKindOfClass:[scenePause class]]) {
+                [node removeFromParent];
+                break;
+            }
+        }
+    }else{
+        self.paused = YES;
+        scenePause *pause = [[scenePause alloc]init];
+        pause.position = CGPointMake(self.size.width/2, self.size.height/2);
+        [self addChild:pause];
+    }
+}
 
 -(void)didMoveToView:(SKView *)view {
-    /* Setup your scene here */
+    
+    skButton *button = [[skButton alloc]initWithImageNamed:@"mushroom" colorSelected:[SKColor greenColor] size:CGSizeMake(50,50)];
+    [button setTouchUpTarget:self action:@selector(bttnListener)];
+    button.position = CGPointMake(self.size.width - 50, 150);
+    [self addChild:button];
+    
     self.backgroundColor = [SKColor whiteColor];
     self.physicsWorld.contactDelegate = self;
     
@@ -26,19 +49,19 @@
     player.scale = 0.25;
     player.healthBar.progress = 1;
     [player characterDidLevelUP:^(CGFloat lvl){
-        levelLabel.text = [NSString stringWithFormat:@"Level %d",(int)player.level];
+        levelLabel.text = [NSString  stringWithFormat:@"Level %d",(int)player.level];
     }];
     [NSTimer scheduledTimerWithTimeInterval:0.4 target:self selector:@selector(fire) userInfo:nil repeats:YES];
     
     experienceBar = [[TCProgressBarNode alloc]initWithSize:CGSizeMake(self.view.bounds.size.width, 10) backgroundColor:[SKColor groupTableViewBackgroundColor] fillColor:[SKColor grayColor] borderColor:[SKColor lightGrayColor] borderWidth:2 cornerRadius:4];
-    experienceBar.position = CGPointMake(self.view.bounds.size.width - 90, 100);
+    experienceBar.position = CGPointMake(self.size.width/2, 100);
     
     levelLabel = [SKLabelNode labelNodeWithFontNamed:@"Arial"];
     levelLabel.fontColor = [SKColor redColor];
     levelLabel.text = [NSString stringWithFormat:@"Level %d",(int)player.level];
     levelLabel.fontSize = 20;
-    levelLabel.position = CGPointMake(self.view.bounds.size.width - experienceBar.position.x , 120);
-    levelLabel.zPosition = kLayertopMost;
+    levelLabel.position = CGPointMake(self.size.width/2 , 120);
+    levelLabel.zPosition = kLayerUI;
     levelLabel.horizontalAlignmentMode = SKLabelHorizontalAlignmentModeRight;
     
     myLabel = [SKLabelNode labelNodeWithFontNamed:@"Arial"];
@@ -46,7 +69,7 @@
     myLabel.text = [NSString stringWithFormat:@"Score %d",(int)player.scorePoint];
     myLabel.fontSize = 20;
     myLabel.position = CGPointMake(self.size.width - 16, self.size.height - 150);
-    myLabel.zPosition = kLayertopMost;
+    myLabel.zPosition = kLayerUI;
     myLabel.horizontalAlignmentMode = SKLabelHorizontalAlignmentModeRight;
     
     [self addChild:levelLabel];
@@ -71,6 +94,7 @@
     bullets *bullet = [[bullets alloc]initColor:[SKColor redColor] damage:player.damage];
     bullet.position = CGPointMake(player.position.x, player.position.y + (([player calculateAccumulatedFrame].size.height)/2) + 4);
     [self addChild:bullet];
+
 }
 
 -(void)generateEnemy{
@@ -94,19 +118,21 @@
 -(void)didBeginContact:(SKPhysicsContact *)contact{
 
     if (contact.bodyA.categoryBitMask == kBodyTypeEnemy || contact.bodyB.categoryBitMask == kBodyTypeEnemy) {
-        if ([contact.bodyA.node.name isEqualToString:kphysicsBodyEnemy]) {
-            mushroom *ms = (mushroom*)contact.bodyA.node;
-            bullets *bl = (bullets*)contact.bodyB.node;
-            [ms takeDamage:bl.damage];
-            [bl destroy];
-            contact.bodyB.categoryBitMask = 0;
-        }else if([contact.bodyB.node.name isEqualToString:kphysicsBodyEnemy]){
-            mushroom *ms = (mushroom*)contact.bodyB.node;
-            bullets *bl = (bullets*)contact.bodyA.node;
-            [ms takeDamage:bl.damage];
-            [bl destroy];
-            contact.bodyA.categoryBitMask = 0;
-            
+        if (contact.bodyA.node.parent != nil && contact.bodyB.node.parent != nil) {
+            if ([contact.bodyA.node.name isEqualToString:kphysicsBodyEnemy]) {
+                mushroom *ms = (mushroom*)contact.bodyA.node;
+                bullets *bl = (bullets*)contact.bodyB.node;
+                [ms takeDamage:bl.damage];
+                [bl destroy];
+                contact.bodyB.categoryBitMask = 0;
+            }else if([contact.bodyB.node.name isEqualToString:kphysicsBodyEnemy]){
+                mushroom *ms = (mushroom*)contact.bodyB.node;
+                bullets *bl = (bullets*)contact.bodyA.node;
+                [ms takeDamage:bl.damage];
+                [bl destroy];
+                contact.bodyA.categoryBitMask = 0;
+                
+            }
         }
     }
     

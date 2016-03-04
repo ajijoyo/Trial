@@ -32,7 +32,8 @@
     
 }
 
--(void)viewDidLayoutSubviews{
+-(void)viewWillLayoutSubviews{
+    [super viewWillLayoutSubviews];
 
 }
 

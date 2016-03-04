@@ -37,7 +37,7 @@ CGFloat const defaultScale = 0.25;
         self.name = kphysicsBodyHero;
 
         _healthBar = [[TCProgressBarNode alloc]initWithSize:CGSizeMake(60, 10) backgroundColor:[SKColor groupTableViewBackgroundColor] fillColor:[SKColor greenColor] borderColor:[SKColor lightGrayColor] borderWidth:2 cornerRadius:4];
-        _healthBar.zPosition = kLayertopMost;
+        _healthBar.zPosition = kLayercharacters;
         _healthBar.position = CGPointMake(playerSprite.position.x, playerSprite.position.y - (playerSprite.size.height/2) - 8);
         _healthBar.progress = 1;
         [self addChild:_healthBar];

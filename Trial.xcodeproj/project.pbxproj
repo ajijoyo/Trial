@@ -22,6 +22,8 @@
 		D312E6DD1C85659F008CA6FD /* character.m in Sources */ = {isa = PBXBuildFile; fileRef = D312E6DC1C85659F008CA6FD /* character.m */; };
 		D312E6E01C8578EC008CA6FD /* sturct.m in Sources */ = {isa = PBXBuildFile; fileRef = D312E6DF1C8578EC008CA6FD /* sturct.m */; };
 		D324735B1C85FA6900FB2F4A /* TCProgressBarNode.m in Sources */ = {isa = PBXBuildFile; fileRef = D324735A1C85FA6900FB2F4A /* TCProgressBarNode.m */; };
+		D32756331C88829400F133E7 /* scenePause.m in Sources */ = {isa = PBXBuildFile; fileRef = D32756321C88829400F133E7 /* scenePause.m */; };
+		D32756371C8887AB00F133E7 /* skButton.m in Sources */ = {isa = PBXBuildFile; fileRef = D32756361C8887AB00F133E7 /* skButton.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -53,6 +55,10 @@
 		D312E6DF1C8578EC008CA6FD /* sturct.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = sturct.m; sourceTree = "<group>"; };
 		D32473591C85FA6900FB2F4A /* TCProgressBarNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TCProgressBarNode.h; sourceTree = "<group>"; };
 		D324735A1C85FA6900FB2F4A /* TCProgressBarNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TCProgressBarNode.m; sourceTree = "<group>"; };
+		D32756311C88829400F133E7 /* scenePause.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = scenePause.h; sourceTree = "<group>"; };
+		D32756321C88829400F133E7 /* scenePause.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = scenePause.m; sourceTree = "<group>"; };
+		D32756351C8887AB00F133E7 /* skButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = skButton.h; sourceTree = "<group>"; };
+		D32756361C8887AB00F133E7 /* skButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = skButton.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -90,6 +96,8 @@
 				D312E6E51C857BC9008CA6FD /* healthBar */,
 				D3123E351C86961100A25D5E /* ammo */,
 				D312E6DA1C856030008CA6FD /* actor */,
+				D32756341C88829A00F133E7 /* scenes */,
+				D32756381C8887B900F133E7 /* skbutton */,
 				D30F58191C85402F009EEA00 /* AppDelegate.h */,
 				D30F581A1C85402F009EEA00 /* AppDelegate.m */,
 				D30F581C1C85402F009EEA00 /* GameScene.h */,
@@ -162,6 +170,24 @@
 				D324735A1C85FA6900FB2F4A /* TCProgressBarNode.m */,
 			);
 			name = healthBar;
+			sourceTree = "<group>";
+		};
+		D32756341C88829A00F133E7 /* scenes */ = {
+			isa = PBXGroup;
+			children = (
+				D32756311C88829400F133E7 /* scenePause.h */,
+				D32756321C88829400F133E7 /* scenePause.m */,
+			);
+			name = scenes;
+			sourceTree = "<group>";
+		};
+		D32756381C8887B900F133E7 /* skbutton */ = {
+			isa = PBXGroup;
+			children = (
+				D32756351C8887AB00F133E7 /* skButton.h */,
+				D32756361C8887AB00F133E7 /* skButton.m */,
+			);
+			name = skbutton;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -244,8 +270,10 @@
 				D30F58231C85402F009EEA00 /* GameViewController.m in Sources */,
 				D30F581B1C85402F009EEA00 /* AppDelegate.m in Sources */,
 				D30F581E1C85402F009EEA00 /* GameScene.m in Sources */,
+				D32756371C8887AB00F133E7 /* skButton.m in Sources */,
 				D30F58181C85402F009EEA00 /* main.m in Sources */,
 				D312E6DD1C85659F008CA6FD /* character.m in Sources */,
+				D32756331C88829400F133E7 /* scenePause.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
