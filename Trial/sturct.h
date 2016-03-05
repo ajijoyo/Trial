@@ -47,6 +47,10 @@ extern UInt32 const kBodyTypeBullets;
 /** categoryBitMask int for character */
 extern UInt32 const kBodyTypeCharacter;
 
+/** font for sytem */
+extern NSString * const kFontSystem;
+/** font for system italic */
+extern NSString *const kFontSystemItalic;
 
 
 @end

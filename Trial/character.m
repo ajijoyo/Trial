@@ -69,11 +69,9 @@
 -(int)level{
     return level;
 }
-
 -(CGFloat)health{
     return health;
 }
-
 -(CGFloat)scorePoint{
     return scorePoint;
 }

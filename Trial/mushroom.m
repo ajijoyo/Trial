@@ -16,6 +16,7 @@
         //set default mushroom
         health = 20;
         experience  = 10;
+        scorePoint = 100;
         
         //
         
@@ -31,6 +32,7 @@
         self.physicsBody = [SKPhysicsBody bodyWithTexture:texture size:size];
         self.physicsBody.affectedByGravity = NO;
         self.physicsBody.dynamic = YES;
+        self.physicsBody.allowsRotation = YES;
         self.physicsBody.mass = 1;
         self.physicsBody.categoryBitMask = kBodyTypeEnemy;
         self.physicsBody.contactTestBitMask = kBodyTypeBullets;

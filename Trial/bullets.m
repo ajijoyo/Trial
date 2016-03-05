@@ -21,6 +21,7 @@
         
         self.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:CGSizeMake(_damage, 30)];
         self.physicsBody.dynamic = NO;
+        self.physicsBody.allowsRotation = NO;
         self.physicsBody.affectedByGravity = NO;
         self.physicsBody.mass = 1.0;
         self.physicsBody.categoryBitMask = kBodyTypeBullets;

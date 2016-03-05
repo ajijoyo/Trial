@@ -56,7 +56,7 @@
     experienceBar = [[TCProgressBarNode alloc]initWithSize:CGSizeMake(self.view.bounds.size.width, 10) backgroundColor:[SKColor groupTableViewBackgroundColor] fillColor:[SKColor grayColor] borderColor:[SKColor lightGrayColor] borderWidth:2 cornerRadius:4];
     experienceBar.position = CGPointMake(self.size.width/2, 100);
     
-    levelLabel = [SKLabelNode labelNodeWithFontNamed:@"Arial"];
+    levelLabel = [SKLabelNode labelNodeWithFontNamed:kFontSystem];
     levelLabel.fontColor = [SKColor redColor];
     levelLabel.text = [NSString stringWithFormat:@"Level %d",(int)player.level];
     levelLabel.fontSize = 20;
@@ -64,7 +64,7 @@
     levelLabel.zPosition = kLayerUI;
     levelLabel.horizontalAlignmentMode = SKLabelHorizontalAlignmentModeRight;
     
-    myLabel = [SKLabelNode labelNodeWithFontNamed:@"Arial"];
+    myLabel = [SKLabelNode labelNodeWithFontNamed:kFontSystem];
     myLabel.fontColor = [SKColor redColor];
     myLabel.text = [NSString stringWithFormat:@"Score %d",(int)player.scorePoint];
     myLabel.fontSize = 20;
@@ -83,12 +83,8 @@
     /* Called when a touch begins */
     for (UITouch *touch in touches) {
         CGPoint location = [touch locationInNode:self];
-//        SKAction *move = [SKAction moveTo:location duration:0.5];
-//        [player runAction:move completion:^{
-        
-//        }];
-
-        [player.physicsBody applyImpulse:CGVectorMake(location.x, location.y)];
+        SKAction *move = [SKAction moveTo:location duration:0.5];
+        [player runAction:move completion:nil];
     }
 }
 
@@ -106,7 +102,7 @@
             enm.position = CGPointMake(100 * i, 450 + (j*80));
             [enm startAnim];
             [enm characterDidDie:^{
-                [player setScore:100];
+                [player setScore:enm.scorePoint];
                 myLabel.text = [NSString stringWithFormat:@"Score %d",(int)player.scorePoint];
                 [player GetExp:enm.experience];
                 experienceBar.progress = (player.experience/player.maxExperience);
@@ -147,7 +143,6 @@
     /* Called before each frame is rendered */
     [super update:currentTime];
     
-    player.physicsBody.velocity = CGVectorMake(40, 40);
     
 }
 

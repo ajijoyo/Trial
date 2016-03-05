@@ -15,7 +15,7 @@
 
         backgroundSprite = [SKSpriteNode spriteNodeWithColor:[SKColor colorWithWhite:0.5 alpha:0.3] size:CGSizeMake(kScreenWidth, kScreenHeight)];
         SKLabelNode *label = [SKLabelNode labelNodeWithText:@"Paused"];
-        label.fontName = @"Avenir-BlackOblique";
+        label.fontName = kFontSystemItalic;
         label.fontColor = [SKColor colorFromHexString:@"#FFFFFF"];
         [backgroundSprite addChild:label];
         self.zPosition = kLayerUI;

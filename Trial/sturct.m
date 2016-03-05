@@ -47,7 +47,10 @@ UInt32 const kBodyTypeBullets = 4;
 
 UInt32 const kBodyTypeCharacter = 5;
 
+#pragma mark - font
+NSString *const kFontSystem = @"Avenir-Black";
 
+NSString *const kFontSystemItalic = @"Avenir-BlackOblique";
 
 
 @end
