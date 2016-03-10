@@ -9,14 +9,21 @@
 #import <SpriteKit/SpriteKit.h>
 #import "playerShip.h"
 
-@interface GameScene : SKScene<SKPhysicsContactDelegate>
+@protocol gameSceneDelegate <NSObject>
+
+-(void)gameSceneDidFinish;
+
+@end
+
+@interface GameScene : SKScene<SKPhysicsContactDelegate,SKSceneDelegate>
 {
     playerShip *player;
     NSTimeInterval startTime;
-    
     TCProgressBarNode *healtb;
     TCProgressBarNode *experienceBar;
     SKLabelNode *myLabel;
     SKLabelNode *levelLabel;
+    NSMutableArray *arrayEnm;
 }
+@property(nonatomic,weak) id<gameSceneDelegate> sceneDelegate;
 @end

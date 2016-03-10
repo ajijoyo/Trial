@@ -45,6 +45,7 @@ typedef void (^characterHandlerParams)(CGFloat count);
 
 -(void)setScore:(CGFloat)Point;
 
+
 /** get level this current character */
 @property(nonatomic,assign,readonly) int level;
 /** get health this current character */

@@ -16,6 +16,7 @@
     if (self==[super init]) {
         level = 1;
         scorePoint = 0;
+
     }
     return self;
 }
@@ -48,7 +49,7 @@
 
 -(void)takeDamage:(CGFloat)dmg{
     CGFloat currHealth = health - dmg;
-    if (currHealth >= 0) {
+    if (currHealth > 0) {
         health = currHealth;
         if (actiondamage) {
             actiondamage(dmg);

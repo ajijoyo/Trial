@@ -13,11 +13,10 @@
 
 -(instancetype)init{
     if (self==[super init]) {
-        //set default mushroom
+        //set base mushroom
         health = 20;
         experience  = 10;
         scorePoint = 100;
-        
         //
         
         SKTexture *texture = [SKTexture textureWithImage:[UIImage imageNamed:@"mushroom"]];

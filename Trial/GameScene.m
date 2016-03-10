@@ -11,6 +11,7 @@
 #import "bullets.h"
 
 #import "scenePause.h"
+#import "sceneChanges.h"
 #import "skButton.h"
 
 #define kCyclesPerSecond 0.15f
@@ -35,7 +36,7 @@
 }
 
 -(void)didMoveToView:(SKView *)view {
-    
+
     skButton *button = [[skButton alloc]initWithImageNamed:@"mushroom" colorSelected:[SKColor greenColor] size:CGSizeMake(50,50)];
     [button setTouchUpTarget:self action:@selector(bttnListener)];
     button.position = CGPointMake(self.size.width - 50, 150);
@@ -49,9 +50,11 @@
     player.scale = 0.25;
     player.healthBar.progress = 1;
     [player characterDidLevelUP:^(CGFloat lvl){
+        [self runAction:[SKAction playSoundFileNamed:@"levelup.wav" waitForCompletion:NO]];
         levelLabel.text = [NSString  stringWithFormat:@"Level %d",(int)player.level];
     }];
     [NSTimer scheduledTimerWithTimeInterval:0.4 target:self selector:@selector(fire) userInfo:nil repeats:YES];
+    arrayEnm = [NSMutableArray array];
     
     experienceBar = [[TCProgressBarNode alloc]initWithSize:CGSizeMake(self.view.bounds.size.width, 10) backgroundColor:[SKColor groupTableViewBackgroundColor] fillColor:[SKColor grayColor] borderColor:[SKColor lightGrayColor] borderWidth:2 cornerRadius:4];
     experienceBar.position = CGPointMake(self.size.width/2, 100);
@@ -77,6 +80,8 @@
     [self addChild:experienceBar];
     [self addChild:myLabel];
     [self generateEnemy];
+    
+    
 }
 
 -(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
@@ -84,7 +89,7 @@
     for (UITouch *touch in touches) {
         CGPoint location = [touch locationInNode:self];
         SKAction *move = [SKAction moveTo:location duration:0.5];
-        [player runAction:move completion:nil];
+        [player runAction:move];
     }
 }
 
@@ -102,16 +107,23 @@
             enm.position = CGPointMake(100 * i, 450 + (j*80));
             [enm startAnim];
             [enm characterDidDie:^{
+                [self runAction:[SKAction playSoundFileNamed:@"Explosion.wav" waitForCompletion:NO]];
                 [player setScore:enm.scorePoint];
-                myLabel.text = [NSString stringWithFormat:@"Score %d",(int)player.scorePoint];
                 [player GetExp:enm.experience];
+                myLabel.text = [NSString stringWithFormat:@"Score %d",(int)player.scorePoint];
                 experienceBar.progress = (player.experience/player.maxExperience);
+                [arrayEnm removeObject:enm];
+                if (arrayEnm.count==0) {
+                    [sceneChanges finishwithPlayer:player skscene:self onComplete:^{
+                        [_sceneDelegate gameSceneDidFinish];
+                    }];
+                }
             }];
+            [arrayEnm addObject:enm];
             [self addChild:enm];
         }
     }
 }
-
 #pragma mark - contactdelegate
 -(void)didBeginContact:(SKPhysicsContact *)contact{
 
@@ -138,7 +150,7 @@
 -(void)didEndContact:(SKPhysicsContact *)contact{
 
 }
-
+#pragma mark - each frame
 -(void)update:(CFTimeInterval)currentTime {
     /* Called before each frame is rendered */
     [super update:currentTime];

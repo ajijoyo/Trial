@@ -21,7 +21,7 @@ CGFloat const defaultScale = 0.25;
         damage = 10;
         maxExperience = 50;
         //
-        
+
         playerTexture = [SKTexture textureWithImage:[UIImage imageNamed:@"Spaceship"]];
         CGSize sizeM = CGSizeMake(playerTexture.size.width * defaultScale, playerTexture.size.height * defaultScale);
         
@@ -29,7 +29,7 @@ CGFloat const defaultScale = 0.25;
         
         self.zPosition = kLayercharacters;
         self.physicsBody = [SKPhysicsBody bodyWithTexture:playerTexture size:sizeM];
-        self.physicsBody.dynamic = YES;
+        self.physicsBody.dynamic = NO;
         self.physicsBody.affectedByGravity = NO;
         self.physicsBody.mass = 1.0;
         self.physicsBody.categoryBitMask = kBodyTypeCharacter;
@@ -53,6 +53,8 @@ CGFloat const defaultScale = 0.25;
     self.physicsBody.dynamic = NO;
     self.physicsBody.affectedByGravity = NO;
     self.physicsBody.mass = 1.0;
+    self.physicsBody.categoryBitMask = kBodyTypeCharacter;
+    self.physicsBody.contactTestBitMask = kBodyTypeEnemy;
     self.name = kphysicsBodyHero;
     _healthBar.position = CGPointMake(playerSprite.position.x, playerSprite.position.y - (playerSprite.size.height/2) - 8);
 

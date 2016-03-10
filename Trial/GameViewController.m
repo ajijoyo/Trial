@@ -25,12 +25,13 @@
     
     // Create and configure the scene.
     GameScene *scene = [GameScene nodeWithFileNamed:@"GameScene"];
+    scene.sceneDelegate = self;
     scene.scaleMode = SKSceneScaleModeAspectFill;
-    
     // Present the scene.
     [skView presentScene:scene];
     
 }
+
 
 -(void)viewWillLayoutSubviews{
     [super viewWillLayoutSubviews];
@@ -59,6 +60,11 @@
 
 - (BOOL)prefersStatusBarHidden {
     return YES;
+}
+
+#pragma mark gamescene delegate
+-(void)gameSceneDidFinish{
+    NSLog(@"Finish");
 }
 
 @end

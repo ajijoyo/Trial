@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D30D28001C9111310047AF83 /* sceneChanges.m in Sources */ = {isa = PBXBuildFile; fileRef = D30D27FF1C9111310047AF83 /* sceneChanges.m */; };
 		D30F58181C85402F009EEA00 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = D30F58171C85402F009EEA00 /* main.m */; };
 		D30F581B1C85402F009EEA00 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = D30F581A1C85402F009EEA00 /* AppDelegate.m */; };
 		D30F581E1C85402F009EEA00 /* GameScene.m in Sources */ = {isa = PBXBuildFile; fileRef = D30F581D1C85402F009EEA00 /* GameScene.m */; };
@@ -16,6 +17,8 @@
 		D30F58281C85402F009EEA00 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D30F58271C85402F009EEA00 /* Assets.xcassets */; };
 		D30F582B1C85402F009EEA00 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D30F58291C85402F009EEA00 /* LaunchScreen.storyboard */; };
 		D30F58351C8543E6009EEA00 /* ColorExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = D30F58341C8543E6009EEA00 /* ColorExtension.m */; };
+		D31034841C8AC07A00ED9CD1 /* Explosion.wav in Resources */ = {isa = PBXBuildFile; fileRef = D31034831C8AC07A00ED9CD1 /* Explosion.wav */; };
+		D31034871C8AC11400ED9CD1 /* levelup.wav in Resources */ = {isa = PBXBuildFile; fileRef = D31034861C8AC11400ED9CD1 /* levelup.wav */; };
 		D3123E341C86960D00A25D5E /* bullets.m in Sources */ = {isa = PBXBuildFile; fileRef = D3123E331C86960D00A25D5E /* bullets.m */; };
 		D3123E381C869EA500A25D5E /* mushroom.m in Sources */ = {isa = PBXBuildFile; fileRef = D3123E371C869EA500A25D5E /* mushroom.m */; };
 		D312E6D91C856024008CA6FD /* playerShip.m in Sources */ = {isa = PBXBuildFile; fileRef = D312E6D81C856024008CA6FD /* playerShip.m */; };
@@ -27,6 +30,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		D30D27FE1C9111310047AF83 /* sceneChanges.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = sceneChanges.h; sourceTree = "<group>"; };
+		D30D27FF1C9111310047AF83 /* sceneChanges.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = sceneChanges.m; sourceTree = "<group>"; };
 		D30F58131C85402F009EEA00 /* Trial.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Trial.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D30F58171C85402F009EEA00 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		D30F58191C85402F009EEA00 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -43,6 +48,8 @@
 		D30F58321C85436A009EEA00 /* PrefixHeader.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
 		D30F58331C8543E6009EEA00 /* ColorExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ColorExtension.h; sourceTree = "<group>"; };
 		D30F58341C8543E6009EEA00 /* ColorExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ColorExtension.m; sourceTree = "<group>"; };
+		D31034831C8AC07A00ED9CD1 /* Explosion.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = Explosion.wav; sourceTree = "<group>"; };
+		D31034861C8AC11400ED9CD1 /* levelup.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = levelup.wav; sourceTree = "<group>"; };
 		D3123E321C86960D00A25D5E /* bullets.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = bullets.h; sourceTree = "<group>"; };
 		D3123E331C86960D00A25D5E /* bullets.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = bullets.m; sourceTree = "<group>"; };
 		D3123E361C869EA500A25D5E /* mushroom.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = mushroom.h; sourceTree = "<group>"; };
@@ -91,6 +98,7 @@
 		D30F58151C85402F009EEA00 /* Trial */ = {
 			isa = PBXGroup;
 			children = (
+				D31034851C8AC07E00ED9CD1 /* sounds */,
 				D30F58361C8543F7009EEA00 /* Extension */,
 				D312E6E11C857AA6008CA6FD /* structContainer */,
 				D312E6E51C857BC9008CA6FD /* healthBar */,
@@ -130,6 +138,15 @@
 				D30F58341C8543E6009EEA00 /* ColorExtension.m */,
 			);
 			name = Extension;
+			sourceTree = "<group>";
+		};
+		D31034851C8AC07E00ED9CD1 /* sounds */ = {
+			isa = PBXGroup;
+			children = (
+				D31034861C8AC11400ED9CD1 /* levelup.wav */,
+				D31034831C8AC07A00ED9CD1 /* Explosion.wav */,
+			);
+			name = sounds;
 			sourceTree = "<group>";
 		};
 		D3123E351C86961100A25D5E /* ammo */ = {
@@ -177,6 +194,8 @@
 			children = (
 				D32756311C88829400F133E7 /* scenePause.h */,
 				D32756321C88829400F133E7 /* scenePause.m */,
+				D30D27FE1C9111310047AF83 /* sceneChanges.h */,
+				D30D27FF1C9111310047AF83 /* sceneChanges.m */,
 			);
 			name = scenes;
 			sourceTree = "<group>";
@@ -251,6 +270,8 @@
 				D30F582B1C85402F009EEA00 /* LaunchScreen.storyboard in Resources */,
 				D30F58281C85402F009EEA00 /* Assets.xcassets in Resources */,
 				D30F58261C85402F009EEA00 /* Main.storyboard in Resources */,
+				D31034871C8AC11400ED9CD1 /* levelup.wav in Resources */,
+				D31034841C8AC07A00ED9CD1 /* Explosion.wav in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -261,6 +282,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D30D28001C9111310047AF83 /* sceneChanges.m in Sources */,
 				D312E6E01C8578EC008CA6FD /* sturct.m in Sources */,
 				D3123E341C86960D00A25D5E /* bullets.m in Sources */,
 				D312E6D91C856024008CA6FD /* playerShip.m in Sources */,
